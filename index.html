@@ -9,9 +9,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
     <style>
         html { scroll-behavior: smooth; }
+        .hero-bg {
+            /* 已更换为你指定的建议链接：高清商务建筑背景 */
+            background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-900 font-sans">
     <div id="root"></div>
     <script>
         const { useState } = React;
@@ -24,7 +30,8 @@
                 about: {
                     title: "关于 CrossEd Global",
                     p1: "CrossEd Global UK Ltd 总部位于英国，是一家致力于打破文化壁垒、促进中英深度交流的专业咨询机构。",
-                    p2: "我们拥有深厚的英国教育背景与本土商业资源。我们的使命是：通过资源精准对接，为学生提供改变人生的学习体验，为企业提供具有前瞻性的行业洞察，并利用人工智能技术关怀社会。我们的核心价值观是“专业、创新、温度、连接”。"
+                    p2: "我们拥有深厚的英国教育背景与本土商业资源。我们的使命是：通过资源精准对接，为学生提供改变人生的学习体验，为企业提供具有前瞻性的行业洞察，并利用人工智能技术关怀社会。我们的核心价值观是“专业、创新、温度、连接”。",
+                    img_alt: "关于我们 - 团队与连接"
                 },
                 services: {
                     title: "服务详情",
@@ -57,7 +64,8 @@
                 about: {
                     title: "About CrossEd Global",
                     p1: "Headquartered in the UK, CrossEd Global UK Ltd is a professional consultancy dedicated to breaking cultural barriers and fostering deep exchanges between China and the UK.",
-                    p2: "With a strong background in UK education and business, our mission is to provide life-changing learning experiences for students, forward-looking insights for enterprises, and social care through AI. Our values are Professionalism, Innovation, Warmth, and Connection."
+                    p2: "With a strong background in UK education and business, our mission is to provide life-changing learning experiences for students, forward-looking insights for enterprises, and social care through AI. Our values are Professionalism, Innovation, Warmth, and Connection.",
+                    img_alt: "About Us - Team & Connection"
                 },
                 services: {
                     title: "Service Details",
@@ -105,62 +113,76 @@
 
             return React.createElement('div', { className: 'min-h-screen' },
                 // Header
-                React.createElement('nav', { className: 'fixed top-0 w-full bg-white/90 backdrop-blur shadow-sm z-50 p-4 border-b' },
+                React.createElement('nav', { className: 'fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 p-4 border-b border-gray-100' },
                     React.createElement('div', { className: 'container mx-auto flex justify-between items-center' },
-                        React.createElement('div', { className: 'flex items-center space-x-2' },
+                        React.createElement('div', { className: 'flex items-center space-x-3' },
                             React.createElement('img', { 
                                 src: '四叶草图片.jpg', 
                                 alt: 'Logo', 
-                                className: 'w-8 h-8 object-contain',
-                                onError: (e) => { e.target.src = 'https://via.placeholder.com/32?text=C'; }
+                                className: 'w-10 h-10 object-contain',
+                                onError: (e) => { e.target.src = 'https://via.placeholder.com/40?text=C'; }
                             }),
-                            React.createElement('span', { className: 'text-2xl font-bold text-blue-900 tracking-tight' }, 'CrossEd')
+                            React.createElement('span', { className: 'text-2xl font-extrabold text-blue-900 tracking-tight' }, 'CrossEd')
                         ),
-                        React.createElement('div', { className: 'hidden md:flex space-x-6 text-sm font-medium' },
+                        React.createElement('div', { className: 'hidden md:flex space-x-8 text-sm font-semibold text-gray-600' },
                             ['home', 'about', 'services', 'contact'].map(item => 
-                                React.createElement('a', { key: item, href: `#${item}`, className: 'hover:text-blue-600' }, t.nav[item])
+                                React.createElement('a', { key: item, href: `#${item}`, className: 'hover:text-blue-700 transition-colors' }, t.nav[item])
                             )
                         ),
-                        React.createElement('button', { onClick: () => setLang(lang === 'zh' ? 'en' : 'zh'), className: 'text-xs font-bold border-2 border-blue-900 px-3 py-1 rounded-full hover:bg-blue-900 hover:text-white transition' }, lang === 'zh' ? 'EN' : '中文')
+                        React.createElement('button', { onClick: () => setLang(lang === 'zh' ? 'en' : 'zh'), className: 'text-xs font-bold border-2 border-blue-900 px-4 py-1.5 rounded-full hover:bg-blue-900 hover:text-white transition-colors' }, lang === 'zh' ? 'EN' : '中文')
                     )
                 ),
 
-                // Hero
-                React.createElement('section', { id: 'home', className: 'pt-40 pb-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 text-center px-6' },
-                    React.createElement('div', { className: 'max-w-4xl mx-auto' },
-                        React.createElement('h1', { className: 'text-4xl md:text-6xl font-extrabold text-blue-950 mb-8 leading-tight' }, t.hero.title),
-                        React.createElement('p', { className: 'text-xl text-gray-600 mb-10 leading-relaxed' }, t.hero.subtitle),
-                        React.createElement('a', { href: '#contact', className: 'bg-blue-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition' }, t.nav.contact)
+                // Hero Section
+                React.createElement('section', { id: 'home', className: 'hero-bg relative pt-48 pb-32 text-center px-6' },
+                    React.createElement('div', { className: 'absolute inset-0 bg-blue-900/40 backdrop-blur-sm z-0' }),
+                    React.createElement('div', { className: 'relative z-10 max-w-5xl mx-auto text-white' },
+                        React.createElement('h1', { className: 'text-5xl md:text-7xl font-extrabold mb-8 leading-tight drop-shadow-lg' }, t.hero.title),
+                        React.createElement('p', { className: 'text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed max-w-3xl mx-auto' }, t.hero.subtitle),
+                        React.createElement('a', { href: '#contact', className: 'bg-blue-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-blue-500 transition-all' }, t.nav.contact)
                     )
                 ),
 
                 // About Us Section
                 React.createElement('section', { id: 'about', className: 'py-24 bg-white px-6' },
-                    React.createElement('div', { className: 'container mx-auto max-w-4xl text-center' },
-                        React.createElement('h2', { className: 'text-3xl font-bold mb-12 text-blue-900' }, t.about.title),
-                        React.createElement('div', { className: 'grid gap-8 text-left text-gray-700 leading-loose' },
-                            React.createElement('p', { className: 'text-lg italic' }, t.about.p1),
-                            React.createElement('p', null, t.about.p2)
+                    React.createElement('div', { className: 'container mx-auto max-w-6xl' },
+                        React.createElement('div', { className: 'grid grid-cols-1 md:grid-cols-2 gap-16 items-center' },
+                            React.createElement('div', null,
+                                React.createElement('h2', { className: 'text-4xl font-bold mb-8 text-blue-900' }, t.about.title),
+                                React.createElement('div', { className: 'grid gap-8 text-left text-gray-700 leading-loose text-lg' },
+                                    React.createElement('p', { className: 'italic border-l-4 border-blue-200 pl-4' }, t.about.p1),
+                                    React.createElement('p', null, t.about.p2)
+                                )
+                            ),
+                            React.createElement('div', { className: 'relative' },
+                                React.createElement('img', {
+                                    /* 已更换为你指定的 GitHub 文件库插图 */
+                                    src: '我们.png', 
+                                    alt: t.about.img_alt,
+                                    className: 'relative rounded-2xl shadow-2xl object-cover w-full h-auto',
+                                    onError: (e) => { e.target.src = 'https://via.placeholder.com/800x600?text=About+Us+Image'; }
+                                })
+                            )
                         )
                     )
                 ),
 
-                // Services Detail Section
+                // Services Section
                 React.createElement('section', { id: 'services', className: 'py-24 bg-gray-50 px-6' },
                     React.createElement('div', { className: 'container mx-auto' },
-                        React.createElement('h2', { className: 'text-3xl font-bold text-center mb-16 text-blue-900' }, t.services.title),
-                        React.createElement('div', { className: 'grid lg:grid-cols-2 gap-12' },
-                            ['s1', 's2', 's3', 's4'].map(key => React.createElement('div', { key, className: 'bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:border-blue-200 transition' },
+                        React.createElement('h2', { className: 'text-4xl font-bold text-center mb-16 text-blue-900' }, t.services.title),
+                        React.createElement('div', { className: 'grid lg:grid-cols-2 gap-10' },
+                            ['s1', 's2', 's3', 's4'].map(key => React.createElement('div', { key, className: 'bg-white p-10 rounded-3xl shadow-sm border border-gray-100 hover:shadow-xl transition-all group' },
                                 React.createElement('div', { className: 'flex items-center space-x-4 mb-6' },
-                                    React.createElement('div', { className: 'w-12 h-12 bg-blue-900 text-white rounded-xl flex items-center justify-center font-bold text-xl' }, key === 's4' ? 'AI' : key.slice(1)),
+                                    React.createElement('div', { className: 'w-14 h-14 bg-blue-100 text-blue-800 rounded-2xl flex items-center justify-center font-bold text-xl group-hover:bg-blue-600 group-hover:text-white transition-colors' }, key === 's4' ? 'AI' : key.slice(1)),
                                     React.createElement('h3', { className: 'text-2xl font-bold text-blue-900' }, t.services[key].t)
                                 ),
-                                React.createElement('p', { className: 'text-gray-600 mb-6 font-medium' }, t.services[key].d),
-                                React.createElement('ul', { className: 'space-y-3' },
+                                React.createElement('p', { className: 'text-gray-600 mb-8 font-medium text-lg' }, t.services[key].d),
+                                React.createElement('ul', { className: 'space-y-4' },
                                     t.services[key].details.map((detail, idx) => 
-                                        React.createElement('li', { key: idx, className: 'flex items-start text-sm text-gray-500' },
-                                            React.createElement('span', { className: 'text-blue-500 mr-2' }, '✓'),
-                                            detail
+                                        React.createElement('li', { key: idx, className: 'flex items-start text-gray-600' },
+                                            React.createElement('span', { className: 'text-blue-500 mr-3' }, '✓'),
+                                            React.createElement('span', null, detail)
                                         )
                                     )
                                 )
@@ -176,29 +198,23 @@
                             React.createElement('div', null,
                                 React.createElement('h2', { className: 'text-4xl font-bold mb-8' }, t.contact.title),
                                 React.createElement('div', { className: 'space-y-6 opacity-90' },
-                                    React.createElement('div', null, 
-                                        React.createElement('p', { className: 'text-sm uppercase tracking-widest text-blue-400 font-bold' }, 'Email'),
-                                        React.createElement('p', { className: 'text-xl' }, t.contact.email)
-                                    ),
-                                    React.createElement('div', null, 
-                                        React.createElement('p', { className: 'text-sm uppercase tracking-widest text-blue-400 font-bold' }, 'Phone'),
-                                        React.createElement('p', { className: 'text-xl' }, t.contact.phone)
-                                    )
+                                    React.createElement('p', { className: 'text-xl' }, 'Email: ' + t.contact.email),
+                                    React.createElement('p', { className: 'text-xl' }, 'Phone: ' + t.contact.phone)
                                 )
                             ),
-                            React.createElement('form', { onSubmit: handleSubmit, className: 'bg-white p-8 rounded-2xl text-gray-900 space-y-4' },
-                                React.createElement('input', { name: 'name', placeholder: '姓名 / Name', required: true, className: 'w-full p-4 rounded-xl bg-gray-50 border focus:ring-2 focus:ring-blue-400 outline-none transition' }),
-                                React.createElement('input', { name: 'email', type: 'email', placeholder: '邮箱 / Email', required: true, className: 'w-full p-4 rounded-xl bg-gray-50 border focus:ring-2 focus:ring-blue-400 outline-none transition' }),
-                                React.createElement('textarea', { name: 'message', placeholder: '留言 / Message', required: true, className: 'w-full p-4 rounded-xl bg-gray-50 border h-32 focus:ring-2 focus:ring-blue-400 outline-none transition' }),
-                                React.createElement('button', { type: 'submit', className: 'w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-500 shadow-lg transition' }, t.contact.btn)
+                            React.createElement('form', { onSubmit: handleSubmit, className: 'bg-white/10 p-8 rounded-3xl space-y-6' },
+                                React.createElement('input', { name: 'name', placeholder: 'Name', required: true, className: 'w-full p-4 rounded-xl bg-white text-gray-900 outline-none' }),
+                                React.createElement('input', { name: 'email', type: 'email', placeholder: 'Email', required: true, className: 'w-full p-4 rounded-xl bg-white text-gray-900 outline-none' }),
+                                React.createElement('textarea', { name: 'message', placeholder: 'Message', required: true, className: 'w-full p-4 rounded-xl bg-white text-gray-900 h-32 outline-none' }),
+                                React.createElement('button', { type: 'submit', className: 'w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-500 transition-all' }, t.contact.btn)
                             )
                         )
                     )
                 ),
 
                 // Footer
-                React.createElement('footer', { className: 'py-12 text-center text-gray-400 text-xs border-t bg-white' }, 
-                    '© 2026 CrossEd Global UK Ltd. Registered in England & Wales. All Rights Reserved.'
+                React.createElement('footer', { className: 'py-8 text-center text-gray-500 text-sm bg-white' }, 
+                    '© 2026 CrossEd Global UK Ltd. All Rights Reserved.'
                 )
             );
         }
